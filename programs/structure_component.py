@@ -14,9 +14,10 @@ from crystal_toolkit.renderables.moleculegraph import get_molecule_graph_scene
 
 from dash.dependencies import Input, Output, State
 from dash_mp_components import CrystalToolkitScene
-from pymatgen import Composition, DummySpecie
+from pymatgen.core import Composition
 from pymatgen.analysis.graphs import MoleculeGraph, StructureGraph
 from pymatgen.analysis.local_env import NearNeighbors
+from pymatgen.core.periodic_table import DummySpecie
 
 
 class StructureComponent(MPComponent):

@@ -17,7 +17,7 @@ from pydefect.analyzer.eigenvalue_plotter import EigenvaluePlotlyPlotter
 from pydefect.corrections.efnv_correction import ExtendedFnvCorrection
 from pydefect.corrections.site_potential_plotter import \
     SitePotentialPlotlyPlotter
-from pymatgen import Molecule
+from pymatgen.core import Molecule
 from pymatgen.analysis.graphs import MoleculeGraph
 from pymatgen.analysis.local_env import CrystalNN
 from vise.analyzer.dielectric_function import DieleFuncData
