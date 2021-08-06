@@ -48,7 +48,7 @@ def create_app(source_dir: str = None, formulas: List[str] = None):
         formula, defect_type = full_name.split("_", 1)
         print(source_dir / formula, defect_type)
         print("serve tar file:", full_name)
-        return flask.send_from_directory(source_dir / formula, f"{defect_type}.tar.gz")
+        return flask.send_from_directory(source_dir / formula, f"{full_name}.tar.gz")
 
     @app.server.route(f'/downloads/defects/<full_name>.vesta',
                       methods=['GET'])
@@ -56,7 +56,7 @@ def create_app(source_dir: str = None, formulas: List[str] = None):
         formula, defect_type = full_name.split("_", 1)
         print(source_dir / formula, defect_type)
         print("serve vesta file:", full_name)
-        return flask.send_from_directory(source_dir / formula, f"{defect_type}.vesta")
+        return flask.send_from_directory(source_dir / formula, f"{full_name}.vesta")
 
     @app.server.route(f'/downloads/unitcell/<full_name>', methods=['GET'])
     def serve_poscar_file(full_name: str):
