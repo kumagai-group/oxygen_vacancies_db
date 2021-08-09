@@ -57,14 +57,14 @@ class BulkVisualData(DataclassRoundTrip):
     band_gap: float = None
     band_dd_hybrid_plot_info: BandPlotInfo = None
     # absorption
-    optical_gap: float = None
-    diele_func: DieleFuncData = None
-    shifted_diele_func: DieleFuncData = None
+    # optical_gap: float = None
+    # diele_func: DieleFuncData = None
+    # shifted_diele_func: DieleFuncData = None
     # effective_mass_pbesol
-    ave_p_mass: float = None
-    ave_n_mass: float = None
-    p_mass_tensor: List[List[float]] = None
-    n_mass_tensor: List[List[float]] = None
+    # ave_p_mass: float = None
+    # ave_n_mass: float = None
+    # p_mass_tensor: List[List[float]] = None
+    # n_mass_tensor: List[List[float]] = None
     # dos_pbesol
     dos_plot_data: DosPlotData = None
 
@@ -72,11 +72,11 @@ class BulkVisualData(DataclassRoundTrip):
     @suppress_exception
     def pretty_band_gap(self):
         return f"{np.round(self.band_gap, 2)} eV"
-
-    @property
-    @suppress_exception
-    def pretty_optical_gap(self):
-        return f"{np.round(self.optical_gap, 2)} eV"
+    #
+    # @property
+    # @suppress_exception
+    # def pretty_optical_gap(self):
+    #     return f"{np.round(self.optical_gap, 2)} eV"
 
     @property
     @suppress_exception
@@ -102,26 +102,26 @@ class BulkVisualData(DataclassRoundTrip):
     @suppress_exception
     def pretty_bader_charges(self):
         return np.round(self.bader_charges, 2)
-
-    @property
-    @suppress_exception
-    def pretty_p_mass_tensor(self):
-        return get_table(np.round(self.p_mass_tensor, 2))
-
-    @property
-    @suppress_exception
-    def pretty_n_mass_tensor(self):
-        return get_table(np.round(self.n_mass_tensor, 2))
-
-    @property
-    @suppress_exception
-    def pretty_ave_p_mass(self):
-        return np.round(self.ave_p_mass, 1)
-
-    @property
-    @suppress_exception
-    def pretty_ave_n_mass(self):
-        return np.round(self.ave_n_mass, 1)
+    #
+    # @property
+    # @suppress_exception
+    # def pretty_p_mass_tensor(self):
+    #     return get_table(np.round(self.p_mass_tensor, 2))
+    #
+    # @property
+    # @suppress_exception
+    # def pretty_n_mass_tensor(self):
+    #     return get_table(np.round(self.n_mass_tensor, 2))
+    #
+    # @property
+    # @suppress_exception
+    # def pretty_ave_p_mass(self):
+    #     return np.round(self.ave_p_mass, 1)
+    #
+    # @property
+    # @suppress_exception
+    # def pretty_ave_n_mass(self):
+    #     return np.round(self.ave_n_mass, 1)
 
     @property
     def lattice(self):

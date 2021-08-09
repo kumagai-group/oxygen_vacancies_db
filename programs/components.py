@@ -20,9 +20,9 @@ from pydefect.corrections.site_potential_plotter import \
 from pymatgen.core import Molecule
 from pymatgen.analysis.graphs import MoleculeGraph
 from pymatgen.analysis.local_env import CrystalNN
-from vise.analyzer.dielectric_function import DieleFuncData
+# from vise.analyzer.dielectric_function import DieleFuncData
 from vise.analyzer.dos_data import DosPlotData
-from vise.analyzer.plot_absorption_coeff import AbsorptionCoeffPlotlyPlotter
+# from vise.analyzer.plot_absorption_coeff import AbsorptionCoeffPlotlyPlotter
 from vise.analyzer.plot_band import BandPlotInfo
 from vise.analyzer.plot_band_dos import BandDosPlotlyPlotter
 from vise.analyzer.plot_brillouin_zone import BZPlotInfo, BZPlotlyPlotter
@@ -47,22 +47,22 @@ def pretty_frac_format(x):
     return x_str
 
 
-class AbsorptionComponent(MPComponent):
-    def __init__(self, diele_func_data: DieleFuncData = None, *args, **kwargs):
-        if diele_func_data:
-            plotter = AbsorptionCoeffPlotlyPlotter(diele_func_data)
-            fig = dcc.Graph(figure=plotter.create_figure())
-            self.column = Column([H3("Absorption coefficient"), fig])
-        else:
-            self.column = H3("Absorption coefficient not available")
-        super().__init__(*args, **kwargs)
+# class AbsorptionComponent(MPComponent):
+#     def __init__(self, diele_func_data: DieleFuncData = None, *args, **kwargs):
+#         if diele_func_data:
+#             plotter = AbsorptionCoeffPlotlyPlotter(diele_func_data)
+#             fig = dcc.Graph(figure=plotter.create_figure())
+#             self.column = Column([H3("Absorption coefficient"), fig])
+#         else:
+#             self.column = H3("Absorption coefficient not available")
+#         super().__init__(*args, **kwargs)
 
-    @property
-    def layout(self):
-        return html.Div(Columns([self.column]))
+    # @property
+    # def layout(self):
+    #     return html.Div(Columns([self.column]))
 
-    def generate_callbacks(self, app, cache):
-        pass
+    # def generate_callbacks(self, app, cache):
+    #     pass
 
 
 class BandDosComponent(MPComponent):
@@ -121,11 +121,12 @@ class ScalarComponent(MPComponent):
     @property
     def layout(self):
         data = {"Band gap": self.data.pretty_band_gap,
-                "Optical gap": self.data.pretty_optical_gap,
+                # "Optical gap": self.data.pretty_optical_gap,
                 "Ave ion-clamped dielectrics": self.data.pretty_ave_ele_dielectric,
                 "Ave ionic dielectrics": self.data.pretty_ave_ion_dielectric,
-                "Ave hole effective mass": self.data.pretty_ave_p_mass,
-                "Ave electron effective mass": self.data.pretty_ave_n_mass}
+                # "Ave hole effective mass": self.data.pretty_ave_p_mass,
+                # "Ave electron effective mass": self.data.pretty_ave_n_mass,
+                }
         return Columns([Column([H4("Material properties"), get_data_list(data)])])
 
     def generate_callbacks(self, app, cache):
@@ -141,8 +142,9 @@ class TensorComponent(MPComponent):
     def layout(self):
         data = {"Ion-clamped dielectrics": self.data.pretty_ele_dielectric,
                 "Ionic dielectrics": self.data.pretty_ion_dielectric,
-                "Hole effective mass": self.data.pretty_p_mass_tensor,
-                "Electron effective mass": self.data.pretty_n_mass_tensor}
+                # "Hole effective mass": self.data.pretty_p_mass_tensor,
+                # "Electron effective mass": self.data.pretty_n_mass_tensor,
+                }
         return Columns([Column([H4("Tensor properties"), get_data_list(data)])])
 
     def generate_callbacks(self, app, cache):

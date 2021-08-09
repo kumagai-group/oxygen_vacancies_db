@@ -4,7 +4,7 @@ from pathlib import Path
 
 from crystal_toolkit.helpers.layouts import (html, Container, Section,
                                              Columns, Column, Box, Reveal, H4, dcc)
-from monty.serialization import loadfn
+# from monty.serialization import loadfn
 import json
 from pydefect.analyzer.dash_components.cpd_energy_dash import CpdEnergyComponent
 from pydefect.chem_pot_diag.chem_pot_diag import ChemPotDiag
@@ -12,7 +12,7 @@ from pydefect.chem_pot_diag.chem_pot_diag import ChemPotDiag
 from programs.bulk_dataclass import BulkVisualData
 from programs.components import SymmetryComponent, ScalarComponent, \
     TensorComponent, SiteComponent, BandDosComponent, BZComponent, \
-    AbsorptionComponent, DefectStatusTableComponent
+    DefectStatusTableComponent
 from programs.defect_dataclass import DefectVisualData
 from programs.structure_component import StructureComponent
 
@@ -75,11 +75,11 @@ class CreateLayout:
     @property
     def _bz(self):
         return BZComponent(self.bulk_data.bz_plot_info, id=f"bz_{self.formula}")
-
-    @property
-    def _absorption(self):
-        return AbsorptionComponent(self.bulk_data.shifted_diele_func,
-                                   id=f"absorption_{self.formula}")
+    #
+    # @property
+    # def _absorption(self):
+    #     return AbsorptionComponent(self.bulk_data.shifted_diele_func,
+    #                                id=f"absorption_{self.formula}")
 
     @property
     def _defect_status(self):
@@ -166,7 +166,7 @@ class CreateLayout:
                                         Reveal([self._bz.layout],
                                                title="Brillouin zone",
                                                id="bz-show-options"),
-                                        self._absorption.layout
+                                        # self._absorption.layout
                                         ],
                                        )),
                         Column(self._defect_status.layout),
