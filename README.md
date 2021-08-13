@@ -19,6 +19,4 @@ This repository includes the database reported in the paper
 
 ## Precautions  
 
-1. The calculation results for effective masses and absorption coefficients are shown in the GUI. 
-   However, the paper related to these calculations is not written yet,
-   and the details will be explained soon.
+1. 
