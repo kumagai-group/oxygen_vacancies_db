@@ -16,6 +16,7 @@ This repository includes the database reported in the paper
 6. Run `python (PATH TO oxygen_vacancies_db)/programs/create_app.py --source_dir="(PATH TO oxygen_vacancies_db)/oxygen_vacancies_db_ data" --formulas="[ZnO]"` 
    to see if you can create a ZnO page.
 
+The data licensed under a [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.
 
 ## Precautions  
 
