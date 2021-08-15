@@ -15,7 +15,8 @@ and [pydefect](https://github.com/kumagai-group/pydefect) codes:
    (about 2GB)
 5. Export PYTHONPATH=$PYTHONPATH:(PATH TO oxygen_vacancies_db) to add the path
 6. Run `python (PATH TO oxygen_vacancies_db)/programs/create_app.py --source_dir="(PATH TO oxygen_vacancies_db)/oxygen_vacancies_db_ data" --formulas="[ZnO]"` 
-   to see if you can create a ZnO page.
+   to see if you can create a ZnO page. You need to write, e.g., `"['Zn(GaO2)2']"` when the formula has parentheses.
+7. Open the web page, e.g., `http://127.0.0.1:8050/` using a browser. We recommend to use Google Chrome.
 
 All the data is licensed under a [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.
 
@@ -49,11 +50,11 @@ The green lines in the *band* figure shows the PBE band structure, while
 the black lines the calculated one by the non-self-consistent use of a dielectric-dependent (nsc-dd) hybrid functional.
 See our paper for details of the calculation conditions.
 
-### Defects with PHS
+#### Defects with PHS
 This panel tabulates the defects with perturbed host states (PHS).
 See our paper for details of the PHS.
 
-### Non-trivial Defects
+#### Non-trivial Defects
 This panel indicates a set of defects that show non-trivial defects.
 
 - defect type: Shown when the defect type is detected other than vacancy.
@@ -63,8 +64,16 @@ This panel indicates a set of defects that show non-trivial defects.
   be different from the initial structure using the atom mapping technique with cutoff = 1Å.
 - energy strange: Shown when the absolute formation energy is anomalously large.
 
+#### Defect Formation Energy
+Using the **Allow defects with perturbed host states** button, 
+one can control if the formation energies of the defects with the PHS are considered in the formation energy figure. 
+
+One can also change the chemical potential condition by pushing the circle with an alphabet in the chemical potential diagram
+for binary or ternary compounds. 
+Otherwise, **Equilibrium label** can be used for the chemical potential.
+
 ### To defect page
-This web page shows the information on individual defect.
+This web page shows the information on individual defect calculation.
 The name indicates vacancy site and charge state (*q*). 
 For example, Va_O1_0 means the oxygen vacancy at the O1 site with charge state *q*=0.
 
