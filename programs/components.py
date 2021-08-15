@@ -272,9 +272,9 @@ class DefectStatusTableComponent(MPComponent):
     def layout(self):
         return Columns([Column([H4("Defect Status"),
                                 self.defect_state_table,
-                                H4("Shallow Defects"),
+                                H4("Defects with PHS"),
                                 self.shallow_defects,
-                                H4("Unusual Defects"),
+                                H4("Non-trivial Defects"),
                                 self.unusual_defects])])
 
     def generate_callbacks(self, app, cache):

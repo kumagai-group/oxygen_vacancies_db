@@ -1,11 +1,9 @@
 ## Oxygen vacancy database  
-
 This repository includes the database reported in the paper
 "Insights Into Oxygen Vacancies from High-Throughput First-Principles Calculations
 " written by Yu Kumagai, Naoki Tsunoda, Akira Takahashi, and Fumiyasu Oba.
 
 ## How to use  
-
 1. Clone this repository.
 2. Prepare a clean python environment using e.g., virtualenv.
 3. Run `pip install -r requirements.txt` to install the relevant python files.
@@ -16,14 +14,13 @@ This repository includes the database reported in the paper
 6. Run `python (PATH TO oxygen_vacancies_db)/programs/create_app.py --source_dir="(PATH TO oxygen_vacancies_db)/oxygen_vacancies_db_ data" --formulas="[ZnO]"` 
    to see if you can create a ZnO page.
 
-The data licensed under a [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.
+All the data is licensed under a [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.
 
-###  site_info.tar.gz file
+### site_info.tar.gz file
 This is the compressed files containing the site infos in the supercells.
 The cif files of the supercell structures are also included.
  
-###  oxygen_vacancies_db directory
-
+### oxygen_vacancies_db directory
 This directory contains the information related to the machine learning of the defect formation energies.
 The df_charge{0,1,2}.pcl files are the pickled dataframe files.
 These can be retrieved using the following command.
@@ -37,7 +34,6 @@ df = pd.read_pickle(f"df_charge{charge}.pcl")
 The csv files are also distributed.
 
 #### machine_learning.py
-
 This script was used for the machine learning of the defect formation energies.
 The command line argument is the random state used in the scikit learn, and 
 the script can be run as follows:
@@ -46,7 +42,11 @@ python ~/my_programs/oxygen_vacancies_db/vacancy_formation_energy_ml/machine_lea
 ```
 
 ## Description of the GUI
-### Unusual Defects
+### Defects with PHS
+This panel tabulates the defects with perturbed host states (PHS).
+See our paper for details of the PHS.
+
+### Non-trivial Defects
 This panel indicates a set of defects that show non-trivial defects.
 
 - unusual defect type: Shown when the defect type is detected other than vacancy, its type is written.
@@ -82,5 +82,10 @@ The arrow indicates the direction of the displacement and the length is 10 times
 The PARCHG file is a compressed file, which includes the converged structure named CONTCAR-finish with POSCAR format,
 and the parchg_($BAND_INDEX).vesta files show the structure with squared wavefunction at the $BAND_INDEX band index
 When the number of k-points is more than 1, their averaged value by weight is shown.
+The values in PARCHG_($BAND_INDEX).vesta are those categorized according to the normalized values by the largest value
+to reduce the compressed file size.
 
-
+- 0.0 ~ 0.1 --> 0
+- 0.1 ~ 0.5 --> 1
+- 0.5 ~ 0.8 --> 2
+- 0.8 ~ 1.0 --> 3
