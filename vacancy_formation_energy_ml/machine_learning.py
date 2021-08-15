@@ -2,6 +2,7 @@
 #  Copyright (c) 2020 Yu Kumagai.
 import sys
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Dict, Tuple
 
 import numpy as np
@@ -176,9 +177,10 @@ class Regression:
 
 
 if __name__ == "__main__":
+    filepath = Path(__file__).parent
     random_state = int(sys.argv[1])
     for charge in [0, 1, 2]:
-        df = pd.read_pickle(f"df_charge{charge}.pcl")
+        df = pd.read_pickle(filepath / f"df_charge{charge}.pcl")
 #        # fill zero for weights that do not exist.
         df.fillna(0, inplace=True)
         for train_size in [22, 70, 220, 700]:
