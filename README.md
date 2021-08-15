@@ -1,7 +1,10 @@
-## Oxygen vacancy database  
+# Oxygen vacancy database  
 This repository includes the database reported in the paper
 "Insights Into Oxygen Vacancies from High-Throughput First-Principles Calculations
 " written by Yu Kumagai, Naoki Tsunoda, Akira Takahashi, and Fumiyasu Oba.
+
+The data are generated mainly using the [vise](https://github.com/kumagai-group/vise) 
+and [pydefect](https://github.com/kumagai-group/pydefect) codes:
 
 ## How to use  
 1. Clone this repository.
@@ -16,14 +19,13 @@ This repository includes the database reported in the paper
 
 All the data is licensed under a [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.
 
-### site_info.tar.gz file
-This is the compressed files containing the site infos in the supercells.
-The cif files of the supercell structures are also included.
+## site_info.tar.gz file
+This compressed file contains the site information in the supercells.
+The cif files describe the supercell structures adopted in the paper.
  
-### oxygen_vacancies_db directory
-This directory contains the information related to the machine learning of the defect formation energies.
-The df_charge{0,1,2}.pcl files are the pickled dataframe files.
-These can be retrieved using the following command.
+## oxygen_vacancies_db directory
+This directory includes the information related to the machine learning of the defect formation energies.
+The df_charge{0,1,2}.pcl files are the pickled dataframe files and DataFrame instances can be retrieved using the following command.
 
 ```python
 import pandas as pd
@@ -31,17 +33,22 @@ charge = 0
 df = pd.read_pickle(f"df_charge{charge}.pcl")
 ```
 
-The csv files are also distributed.
+The csv files generated from the dataframes are also distributed.
 
-#### machine_learning.py
+### machine_learning.py
 This script was used for the machine learning of the defect formation energies.
-The command line argument is the random state used in the scikit learn, and 
-the script can be run as follows:
+The command line argument receives the random state used in the scikit learn. 
+The script can be run as follows:
 ```
 python ~/my_programs/oxygen_vacancies_db/vacancy_formation_energy_ml/machine_learning.py 1
 ```
 
-## Description of the GUI
+## Description for the graphical user interface 
+### Band structure & density of states
+The green lines in the *band* figure shows the PBE band structure, while
+the black lines the calculated one by the non-self-consistent use of a dielectric-dependent (nsc-dd) hybrid functional.
+See our paper for details of the calculation conditions.
+
 ### Defects with PHS
 This panel tabulates the defects with perturbed host states (PHS).
 See our paper for details of the PHS.
@@ -49,21 +56,24 @@ See our paper for details of the PHS.
 ### Non-trivial Defects
 This panel indicates a set of defects that show non-trivial defects.
 
-- unusual defect type: Shown when the defect type is detected other than vacancy, its type is written.
-  In this study, vacancy_spit or unknown are appeared, the latter of which indicates large atomic reconstruction.
-- supergroup: Shown if the final structure shows supergroup relation with respect to the initial site symmetry.
-- not same config from init: Shown if the atomic configuration is considered to 
+- defect type: Shown when the defect type is detected other than vacancy.
+  The shown type is vacancy_spit or unknown, the latter of which indicates the defect accompany large atomic reconstruction.
+- supergroup: Shown when the final structure shows supergroup relation with respect to the initial site symmetry.
+- not same config from init: Shown when the atomic configuration is considered to 
   be different from the initial structure using the atom mapping technique with cutoff = 1Å.
-- energy strange: Shown in the absolute formation energy is anomalously large.
+- energy strange: Shown when the absolute formation energy is anomalously large.
 
 ### To defect page
-This page shows the information on individual defect.
-The name e.g., Va_O1_0 indicates oxygen vacancy at the O1 site with charge state q=0.
+This web page shows the information on individual defect.
+The name indicates vacancy site and charge state (*q*). 
+For example, Va_O1_0 means the oxygen vacancy at the O1 site with charge state *q*=0.
 
 #### Potential 
-It shows the atomic site potential. 
-The values for elements are potentials caused by the defect, which is the potential difference of the defective supercells from the perfect supercells calculated by VASP.
-The PC indicates the point-charge potential, while Diff means the element values minus PC values.
+This panel shows the atomic site potential. 
+The values for elements are potentials caused by the defect, 
+which is the potential difference of the defective supercells from the perfect supercells calculated with VASP.
+The **PC** indicates the point-charge potential, 
+while **Diff** means difference of the element values from the **PC** values.
 
 #### Eigenvalues 
 The Eigenvalues mean the electron eigenvalues at the converged structures.
@@ -82,8 +92,8 @@ The arrow indicates the direction of the displacement and the length is 10 times
 The PARCHG file is a compressed file, which includes the converged structure named CONTCAR-finish with POSCAR format,
 and the parchg_($BAND_INDEX).vesta files show the structure with squared wavefunction at the $BAND_INDEX band index
 When the number of k-points is more than 1, their averaged value by weight is shown.
-The values in PARCHG_($BAND_INDEX).vesta are those categorized according to the normalized values by the largest value
-to reduce the compressed file size.
+To reduce the compressed file size, the values in PARCHG_($BAND_INDEX).vesta are categorized from their original values
+according to the normalized values by the largest value as shown below. And, the VESTA show theses isosurfaces by default.
 
 - 0.0 ~ 0.1 --> 0
 - 0.1 ~ 0.5 --> 1
