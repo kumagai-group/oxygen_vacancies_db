@@ -14,8 +14,10 @@ and [pydefect](https://github.com/kumagai-group/pydefect) codes.
    and unpack the files with `for i in *.tar.gz; do echo $i; tar xvfz $i; done` 
    (about 2GB)
 5. Add the path to oxygen_vacancies_db directory, e.g., with `export PYTHONPATH=$PYTHONPATH:(PATH TO oxygen_vacancies_db)` command.
-6. Run `python (PATH TO oxygen_vacancies_db)/programs/create_app.py --source_dir="(PATH TO oxygen_vacancies_db)/oxygen_vacancies_db_ data" --formulas="[ZnO]"` 
+6. Run `python (PATH TO oxygen_vacancies_db)/programs/create_app.py --source_dir="(PATH TO oxygen_vacancies_db)/oxygen_vacancies_db_data" --formulas="[ZnO]"` 
    to see if you can create a ZnO page. You need single quotations, e.g., `"['Zn(GaO2)2']"` when the formula has parentheses.
+   The (PATH TO oxygen_vacancies_db) would be absolute one beginning with `/`. 
+   One can also specify the port number as `--port=8051` (default is 8050).
 7. Open the web page, e.g., `http://127.0.0.1:8050/` using a browser. Since the safari does not support part of plotly's functions, 
    so we recommend using another browser such as Google Chrome.
 
@@ -94,8 +96,8 @@ It indicates the electron eigenvalues at the converged structures.
 The energy is in the absolute scale directly obtained from the VASP calculations.
 The horizontal two purple lines indicate the valence band maximum and conduction band minimum in the supercell without a vacancy.
 The occupation number and band index are appeared by moving their mouse cursor over the point.
-The points are colored by blue when the occupation is less than 0.2, 
-while by red when it is larger than 0.8, and those in between by green.
+The points are colored by red when the occupation is less than 0.2, 
+while by green when it is larger than 0.8, and those in between by green.
 When the calculation result is spin polarized, eigenvalues in the both spin channel are shown.
 
 #### Vesta file and PARCHG files 
