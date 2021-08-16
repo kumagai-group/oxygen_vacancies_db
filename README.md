@@ -102,14 +102,15 @@ When the calculation result is spin polarized, eigenvalues in the both spin chan
 The VESTA file shows the defective supercell structure in [VESTA](https://jp-minerals.org/vesta/en/) program format.
 Local structures are shown with labels and arrows.
 When the label has a single number, the distance from the defect is shown. 
-Conversely, two numbers connected with an underscore means the distance and the displacement (>0.1Å).
-Arrows indicate the displacement directions and their length that are magnified 10 times.
+Conversely, two numbers connected with an underscore means the distance from the defect and its displacement distance (>0.1Å).
+Arrows indicate the displacement directions and its displacement distance magnified 10 times.
 
-The PARCHG file is a compressed file, which includes the converged structure named CONTCAR-finish with POSCAR format,
+The PARCHG file is a compressed file, which includes the relaxed structure named CONTCAR-finish with POSCAR format,
 and the parchg_($BAND_INDEX).vesta files show the structure with squared wavefunction at the $BAND_INDEX band index
-When the number of k-points is more than 1, their averaged value by weight is shown.
+When the number of k-points is more than 1, their averaged values by weight are stored.
 To reduce the compressed file size, the values in PARCHG_($BAND_INDEX).vesta are categorized from their original values
-according to the normalized values by the largest value as shown below. And, the VESTA show theses isosurfaces by default.
+according to the normalized values by the largest one as shown below. 
+The VESTA show these isosurfaces by default.
 
 - 0.0 ~ 0.1 --> 0
 - 0.1 ~ 0.5 --> 1
