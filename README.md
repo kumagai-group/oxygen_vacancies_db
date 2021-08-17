@@ -97,7 +97,7 @@ The energy is in the absolute scale directly obtained from the VASP calculations
 The horizontal two purple lines indicate the valence band maximum and conduction band minimum in the supercell without a vacancy.
 The occupation number and band index are appeared by moving their mouse cursor over the point.
 The points are colored by red when the occupation is less than 0.2, 
-while by green when it is larger than 0.8, and those in between by green.
+while by blue when it is larger than 0.8, and those in between by green.
 When the calculation result is spin polarized, eigenvalues in the both spin channel are shown.
 
 #### Vesta file and PARCHG files 
