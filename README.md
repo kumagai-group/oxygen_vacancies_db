@@ -40,6 +40,10 @@ df = pd.read_pickle(f"df_charge{charge}.pcl")
 
 The CSV files generated from the dataframes are also distributed in the same directory.
 
+In the columns, the full_name means the formula plus vacancy name (e.g., Va_O1), and vacancy_formation_energy means the 
+vacancy formation energy aligned at the O site local potential, and the origin of the Fermi level is set to the VBM in ZnO.
+See our paper that will appear soon for details.
+
 ### machine_learning.py
 This script was used for the machine learning of the defect formation energies.
 The command line argument receives the random state used in the scikit learn. 
