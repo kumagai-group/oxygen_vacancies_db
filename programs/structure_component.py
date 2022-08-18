@@ -350,7 +350,7 @@ class MoleculeComponent(MPComponent):
         "enableZoom": False,
         "defaultZoom": 0.6}
 
-    default_title = "Crystal Toolkit"
+    default_title = "oxide database"
 
     def __init__(
             self,
