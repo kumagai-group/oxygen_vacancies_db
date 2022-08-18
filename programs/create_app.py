@@ -19,7 +19,7 @@ from programs.create_layout import CreateLayout
 server = flask.Flask(__name__)  # define flask app.server
 
 
-program_path = Path(os.environ.get('OXIDE_DB_Path', "/Users/kumagai/oxy_vac_data"))
+program_path = Path(os.environ.get('OXIDE_DB_PATH', "/Users/kumagai/oxy_vac_data"))
 
 
 def create_app(source_dir: str = None, formulas: List[str] = None):
