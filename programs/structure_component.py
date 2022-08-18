@@ -3,7 +3,7 @@
 import re
 from collections import OrderedDict
 from ctypes import Structure
-from typing import Tuple, Optional
+from typing import Tuple, Optional, Union, Dict
 
 from crystal_toolkit.core.legend import Legend
 from crystal_toolkit.core.mpcomponent import MPComponent
