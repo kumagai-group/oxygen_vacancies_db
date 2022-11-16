@@ -1,9 +1,9 @@
 crystal-toolkit
 pymatgen
 pydefect
-vise
+vise==0.6.3
 dash-core-components
 dash-html-components
 dash-mp-components
-maggma
+robocrys
 irrep
