@@ -23,7 +23,7 @@ program_path = Path(os.environ.get('OXIDE_DB_PATH', "/Users/kumagai/oxy_vac_data
 
 
 def create_app(source_dir: str = None, formulas: List[str] = None):
-
+    print("formula", formulas)
     source_dir = Path(source_dir)
     if formulas is None:
         formulas = \
@@ -42,10 +42,10 @@ def create_app(source_dir: str = None, formulas: List[str] = None):
         # except Exception as e:
         #     print(f'Creation of {formula} layout failed.', e)
 
-#    app = Dash(__name__, suppress_callback_exceptions=True, title="Oxide database")
-    app = Dash(assets_folder=str(program_path / "programs/assets"),
-               server=server, requests_pathname_prefix="/oxides/",
-               title="Oxide database")
+    app = Dash(__name__, suppress_callback_exceptions=True, title="Oxide database")
+#    app = Dash(assets_folder=str(program_path / "programs/assets"),
+#               server=server, requests_pathname_prefix="/oxides/",
+#               title="Oxide database")
     make_html(app, list(layouts.keys()), layouts, defect_layouts)
     app.layout = create_home()
 
@@ -77,17 +77,17 @@ def pick_randomly(candidates: List[str], random_num):
     return sample(candidates, random_num)
 
 
-source_dir = program_path / "oxygen_vacancies_db_data"
-app = create_app(str(source_dir), formulas=["MgO"])
-ctc.register_crystal_toolkit(layout=app.layout, app=app, cache=None)
+#source_dir = program_path / "oxygen_vacancies_db_data"
+#app = create_app(str(source_dir), formulas=["MgO"])
+#ctc.register_crystal_toolkit(layout=app.layout, app=app, cache=None)
 
 
-# def main(source_dir, formulas=None, port=8050):
-#     app = create_app(source_dir, formulas=formulas)
-#     ctc.register_crystal_toolkit(layout=app.layout, app=app, cache=None)
-#     app.run_server(port=port)
+def main(source_dir, formulas=None, port=8050):
+    app = create_app(source_dir, formulas=formulas)
+    ctc.register_crystal_toolkit(layout=app.layout, app=app, cache=None)
+    app.run_server(port=port)
 
 
-# if __name__ == "__main__":
-# #    Fire(main)
-#     main("/Users/kumagai/oxy_vac_data/oxygen_vacancies_db_data")
+if __name__ == "__main__":
+    Fire(main)
+#    main("/Users/kumagai/oxy_vac_data/oxygen_vacancies_db_data")
